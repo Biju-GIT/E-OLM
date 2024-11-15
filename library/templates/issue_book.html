@@ -1,0 +1,54 @@
+{% extends 'admin_navbar.html' %}
+{% load static %}
+
+{% block title %} Issue Book {% endblock %}
+
+{% block css %}
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Issue Book</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% for i in form %}
+        <div class="form-group row">
+            <label for="{{ i.id_for_label }}" class="control-label col-md-4">{{ i.label_tag }}</label>
+            <div class="col-md-8">
+                {{ i }}
+                {% if i.errors %}
+                    <div class="alert alert-danger mt-2">
+                        {% for error in i.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-outline-primary mt-4">Issue Book</button>
+    </form>
+
+    {% if alert %}
+    <div class="alert alert-success mt-3" role="alert">
+        Book Successfully Issued!
+    </div>
+    <a href="/issued_books/" class="btn btn-outline-secondary mt-3">View Issued Books</a>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    setTimeout(function() {
+        document.location = "/issue_book";
+    }, 2000);
+    {% endif %}
+</script>
+{% endblock %}

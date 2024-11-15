@@ -1,0 +1,103 @@
+{% extends 'student_navbar.html' %}
+
+{% block title %} Profile {% endblock %}
+
+{% block css %}
+<style>
+.profile {
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img {
+    text-align: center;
+}
+.profile-img img {
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+.profile-img img:hover {
+    transform: scale(1.05);
+}
+.card {
+    margin-bottom: 1rem;
+}
+@media (max-width: 768px) {
+    .profile-img img {
+        width: 100%;
+        height: auto;
+    }
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container profile">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-img">
+                <img src="{{ user.student.image.url }}" alt="" width="310px" height="270px">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="profile-tab">
+                <div class="tab-pane">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">ID:</h5>
+                            <p class="card-text">{{ user.id }}</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Username:</h5>
+                            <p class="card-text">{{ user }}</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Full Name:</h5>
+                            <p class="card-text">{{ user.get_full_name }}</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Email:</h5>
+                            <p class="card-text">{{ user.email }}</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Phone Number:</h5>
+                            <p class="card-text">{{ user.student.phone|default:"Not Provided" }}</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Branch:</h5>
+                            <p class="card-text">{{ user.student.branch|default:"Not Provided" }}</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Class:</h5>
+                            <p class="card-text">{{ user.student.classroom|default:"Not Provided" }}</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Roll Number:</h5>
+                            <p class="card-text">{{ user.student.roll_no|default:"Not Provided" }}</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="/edit_profile/" class="btn btn-primary mt-3" style="width: 9rem;">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

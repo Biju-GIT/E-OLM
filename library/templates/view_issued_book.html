@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Book Issued Successfully</title>
+
+    <!-- External CSS and JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+      body {
+        background-color: #f9f9f9;
+        font-family: 'Roboto', sans-serif;
+      }
+      .container {
+        max-width: 600px;
+        margin-top: 50px;
+        text-align: center;
+      }
+      .success-message {
+        font-size: 50px;
+        font-weight: bold;
+        background-color: #28a745;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .options a {
+        display: block;
+        margin: 20px 0;
+        padding: 15px 30px;
+        font-size: 18px;
+        text-decoration: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .options a:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    {% include "library/navbaradmin.html" %}
+
+    <div class="container">
+      <div class="success-message">
+        Book Issued Successfully!
+      </div>
+
+      <div class="options">
+        <a href="issuebook" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Click here to issue more Books</a>
+        <a href="viewissuedbook" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Click here to view Issued Books</a>
+      </div>
+    </div>
+
+    {% include "library/footer.html" %}
+    
+  </body>
+</html>

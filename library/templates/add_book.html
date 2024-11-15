@@ -1,0 +1,103 @@
+{% extends 'admin_navbar.html' %}
+{% load static %}
+{% block title %} Library Management System {% endblock %}
+{% block css %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+    }
+
+    .container {
+        background-color: #ffffff;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        color: #3498db;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .btn-outline-primary {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #2980b9;
+        cursor: pointer;
+    }
+
+    .form-control {
+        font-size: 14px;
+        border-radius: 4px;
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    .mt-4 {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Add New Book</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label>Book Name</label>
+                <input type="text" class="form-control mt-2" name="name" placeholder="Enter name of the Book" required>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label>Author Name</label>
+                <input type="text" class="form-control mt-2" name="author" placeholder="Enter name of the Author" required>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label>ISBN Number</label>
+                <input type="number" class="form-control mt-2" name="isbn" placeholder="Enter ISBN number of the book" required>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label>Category</label>
+                <input type="text" class="form-control mt-2" name="category" placeholder="Enter Category of the book" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-4">Add Book</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+        alert("Book is added successfully.");
+        window.location.href = "/view_books";
+    {% endif %}
+</script>
+{% endblock %}

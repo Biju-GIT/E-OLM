@@ -1,0 +1,36 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %} Library Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="p-4 bg-light">
+    <div class="container-fluid py-3">
+      <h1 class="display-5 fw-bold">Biju's Library Management System</h1>
+      <p class="col-md-8 fs-4">
+        You can register as a student. You will be able to issue any book through the admin. After that, you need to return the book within 21 days, or else a fine of Rs 100 will be charged per day till the book is returned.
+      </p>
+      <a href="/student_registration/" class="btn btn-primary btn-lg">Register as Student</a>
+    </div>
+    
+    <br>
+
+    <div class="container">
+      <div class="row">
+
+        <!-- Admin Section -->
+        <div class="col-lg-6 text-center mb-4">
+          <img src="{% static 'admin.png' %}" class="img-fluid" alt="Admin Image"><br><br>
+          <a class="btn btn-outline-primary btn-lg" href="/admin_login/">Admin Login</a>
+        </div>
+
+        <!-- Student Section -->
+        <div class="col-lg-6 text-center mb-4">
+          <img src="{% static 'students.png' %}" class="img-fluid" alt="Student Image"><br><br>
+          <a class="btn btn-outline-success btn-lg" href="/student_login/">Student Login</a>
+        </div>
+
+      </div>
+    </div>
+</div>
+{% endblock %}

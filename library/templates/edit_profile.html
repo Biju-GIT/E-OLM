@@ -1,0 +1,102 @@
+{% extends 'student_navbar.html' %}
+
+{% block title %} Edit Profile {% endblock %}
+
+{% block css %}
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="text-center mb-4">Edit Profile</h2>
+    <form method="POST"> {% csrf_token %}
+    
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Email</i></label>
+            <input type="email" class="form-control mt-2" name="email" value="{{user.email}}" required>
+            {% if form.email.errors %}
+                <div class="alert alert-danger mt-2">
+                    {% for error in form.email.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Mobile Number</i></label>
+            <input type="number" class="form-control mt-2" name="phone" value="{{user.student.phone}}" required>
+            {% if form.phone.errors %}
+                <div class="alert alert-danger mt-2">
+                    {% for error in form.phone.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Branch Name</i></label>
+            <input type="text" class="form-control mt-2" name="branch" value="{{user.student.branch}}" required>
+            {% if form.branch.errors %}
+                <div class="alert alert-danger mt-2">
+                    {% for error in form.branch.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Class Name</i></label>
+            <input type="text" class="form-control mt-2" name="classroom" value="{{user.student.classroom}}" required>
+            {% if form.classroom.errors %}
+                <div class="alert alert-danger mt-2">
+                    {% for error in form.classroom.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Roll Number</i></label>
+            <input type="text" class="form-control mt-2" name="roll_no" value="{{user.student.roll_no}}" required>
+            {% if form.roll_no.errors %}
+                <div class="alert alert-danger mt-2">
+                    {% for error in form.roll_no.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <button type="submit" class="btn btn-outline-primary mt-4">Update Profile</button>
+    
+    {% if alert %}
+    <div class="alert alert-success mt-3" role="alert">
+        Profile Updated Successfully!
+    </div>
+    {% endif %}
+    
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    setTimeout(function() {
+        document.location = "/profile";
+    }, 2000);
+    {% endif %}
+</script>
+{% endblock %}

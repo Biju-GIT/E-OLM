@@ -1,0 +1,89 @@
+{% extends 'admin_navbar.html' %}
+{% load static %}
+{% block title %} Library Management System {% endblock %}
+{% block css %}
+<style>
+    /* Custom Font and Colors */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+        background-color: #f4f4f9;  /* Light gray background */
+        color: #333;  /* Dark gray text color */
+    }
+
+    h1 {
+        color: #2c3e50; /* Dark blue for headers */
+        text-decoration: underline;
+    }
+
+    table {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);  /* Subtle shadow for table */
+    }
+
+    th, td {
+        padding: 12px 15px;  /* More padding for better spacing */
+        text-align: center;
+    }
+
+    th {
+        background-color: #3498db;  /* Blue header background */
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #ecf0f1;  /* Alternate row color */
+    }
+
+    tr:hover {
+        background-color: #d5dbdb;  /* Hover effect on rows */
+    }
+
+    .btn-danger {
+        background-color: #e74c3c;  /* Red button */
+        border-color: #c0392b;
+    }
+
+    .btn-danger:hover {
+        background-color: #c0392b; /* Darker red on hover */
+        border-color: #e74c3c;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+        table {
+            font-size: 14px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center">All Books List</h1>
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>ISBN Number</th>
+                <th>Category</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ forloop.counter }}.</td>
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.category }}</td>
+                <td><a href="/delete_book/{{ book.id }}/" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this book?')">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
